@@ -1,0 +1,12 @@
+{
+  "id": "raily",
+  "name": "Raily",
+  "description": "Read-only Raily personal-agent MCP: status, brief, matches, intros, memory, analysis, and billing status.",
+  "version": "0.1.3",
+  "icon": "https://railyai.com/raily-mark.png",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

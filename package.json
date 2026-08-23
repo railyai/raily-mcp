@@ -11,6 +11,7 @@
   },
   "files": [
     "plugin.json",
+    "openclaw.plugin.json",
     "mcp.json",
     "skills",
     "assets",
