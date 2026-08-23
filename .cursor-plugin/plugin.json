@@ -1,0 +1,20 @@
+{
+  "name": "raily-mcp",
+  "displayName": "Raily MCP",
+  "version": "0.1.0",
+  "description": "Read-only Raily personal-agent MCP: status, brief, matches, intros, memory, analysis, and billing status.",
+  "author": {
+    "name": "Raily AI",
+    "url": "https://railyai.com"
+  },
+  "homepage": "https://railyai.com",
+  "repository": "https://github.com/railyai/raily-mcp",
+  "license": "MIT",
+  "keywords": [
+    "raily",
+    "mcp",
+    "personal-agent",
+    "read-only"
+  ],
+  "logo": "assets/logo.png"
+}
