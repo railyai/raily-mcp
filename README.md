@@ -12,15 +12,26 @@ https://railyai.com/integrations — Connect next to Grok, Codex, Claude Code, o
 
 The site grant does **not** put tokens into Cursor. The assistant still does its own OAuth (plugin or CLI below). Same login, same read-only scopes.
 
-## Install the plugin
+## Grok Bot (hype-wave path)
 
-1. Add this repo as a plugin (Marketplace later; GitHub works now):
-   - `https://github.com/railyai/raily-mcp`
-   - or symlink: `ln -s /path/to/raily-mcp ~/.cursor/plugins/local/raily-mcp`
+There is no one-click on [x.ai/bot](https://x.ai/bot). In the Grok Bot app:
+
+1. **Settings → Plugins → Add**
+2. Custom MCP named `Raily`, URL `https://railyai.com/mcp` (no headers)
+3. Authorize in the browser → Approve
+4. In chat, type `@` and attach Raily
+
+Marketplace listing is **not submitted**. Do not tell users to `npx raily`.
+
+## Install the plugin (Cursor / developers)
+
+1. Official catalog later (owner GO). Until then:
+   - Team Marketplace import of `https://github.com/railyai/raily-mcp`, or
+   - symlink: `ln -s /path/to/raily-mcp ~/.cursor/plugins/local/raily-mcp`
 2. Enable **Raily MCP**.
 3. The client opens a browser. Sign in to Raily and Approve.
 
-`mcp.json` in this repo uses Agent Plugins `type: streamable-http`. That is what Grok Bot / the plugin catalog read.
+`mcp.json` in this repo uses Agent Plugins `type: streamable-http`. That is what a catalog plugin install reads. Grok Bot custom MCP only needs the URL.
 
 ## Cursor CLI
 
@@ -85,6 +96,7 @@ It cannot update the brief, accept or decline intros, change billing, or otherwi
 
 ```text
 raily-mcp/
+├── package.json                # npm name @railyai/raily (ClawHub scope)
 ├── plugin.json                 # Agent Plugins 1.0.0 manifest
 ├── mcp.json                    # Hosted HTTP MCP for plugins (streamable-http)
 ├── cursor-mcp.example.json     # Cursor CLI: url only

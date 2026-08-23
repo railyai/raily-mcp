@@ -1,7 +1,7 @@
 {
   "name": "raily-mcp",
   "displayName": "Raily MCP",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Read-only Raily personal-agent MCP: status, brief, matches, intros, memory, analysis, and billing status.",
   "author": {
     "name": "Raily AI",

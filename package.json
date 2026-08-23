@@ -1,0 +1,19 @@
+{
+  "name": "@railyai/raily",
+  "version": "0.1.2",
+  "private": false,
+  "description": "Read-only Raily personal-agent MCP plugin (hosted Streamable HTTP).",
+  "license": "MIT",
+  "homepage": "https://railyai.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/railyai/raily-mcp.git"
+  },
+  "keywords": [
+    "raily",
+    "mcp",
+    "personal-agent",
+    "read-only",
+    "openclaw"
+  ]
+}
