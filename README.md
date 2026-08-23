@@ -12,6 +12,26 @@ https://railyai.com/integrations — Connect next to Grok, Codex, Claude Code, o
 
 The site grant does **not** put tokens into Cursor. The assistant still does its own OAuth (plugin or CLI below). Same login, same read-only scopes.
 
+## OpenClaw / ClawHub
+
+This repo is an **Agent Plugins bundle** (not a native OpenClaw code plugin).
+OpenClaw maps `plugin.json` + `mcp.json` + `skills/raily/SKILL.md`.
+
+After the org listing is live (owner GO, publisher **`railyai`**, never
+`nttylock`):
+
+```bash
+openclaw plugins install clawhub:@railyai/raily
+openclaw gateway restart
+openclaw mcp login raily
+```
+
+Until then, install from this GitHub checkout:
+
+```bash
+openclaw plugins install /path/to/raily-mcp
+```
+
 ## Grok Bot (hype-wave path)
 
 There is no one-click on [x.ai/bot](https://x.ai/bot). In the Grok Bot app:
