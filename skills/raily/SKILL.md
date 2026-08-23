@@ -22,4 +22,4 @@ This plugin connects to the user's Raily personal agent over MCP. The surface is
 - Never write, update, delete, confirm, accept, decline, or otherwise change user data.
 - Never invent or store secrets, tokens, or bearer headers. OAuth is handled by the client in the browser.
 - If a tool would mutate state, refuse and tell the user to use https://railyai.com instead.
-- If auth fails, send the user to https://railyai.com/integrations to connect or revoke, then retry.
+- If auth fails, send the user to https://railyai.com/integrations to connect or revoke. Cursor CLI: `cursor-agent mcp login raily` (url-only `mcp.json`, no `type`). Fallback: `npx -y mcp-remote https://railyai.com/mcp`. Then retry.
