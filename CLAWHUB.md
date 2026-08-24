@@ -2,6 +2,12 @@
 
 Do **not** publish as personal `nttylock`. Slug must be `@railyai/raily`.
 
+User install:
+
+```bash
+openclaw plugins install clawhub:@railyai/raily
+```
+
 ```bash
 # from this repo root, after clawhub login
 clawhub whoami

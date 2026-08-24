@@ -15,7 +15,7 @@ Connect my Raily personal agent. It is read-only. MCP URL: https://railyai.com/m
 
 If MCP tools are missing:
 
-- **OpenClaw:** make sure this plugin is installed as `@railyai/raily` (never `@nttylock/raily`). Then run `openclaw mcp login raily`, Approve in the browser.
+- **OpenClaw:** `openclaw plugins install clawhub:@railyai/raily` (never `@nttylock/raily`).
 - **Grok Bot:** Settings → Plugins → Add → custom MCP named Raily → same URL, no headers → Approve → type `@` and attach Raily.
 
 Then tell me my Raily status, brief, matches, intros, memory, analysis, and billing.

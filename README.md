@@ -22,8 +22,6 @@ After the org listing is live (owner GO, publisher **`railyai`**, never
 
 ```bash
 openclaw plugins install clawhub:@railyai/raily
-openclaw gateway restart
-openclaw mcp login raily
 ```
 
 Until then, install from this GitHub checkout:
@@ -32,7 +30,7 @@ Until then, install from this GitHub checkout:
 openclaw plugins install /path/to/raily-mcp
 ```
 
-## Grok Bot (hype-wave path)
+## Grok Bot
 
 There is no one-click on [x.ai/bot](https://x.ai/bot). In the Grok Bot app:
 
