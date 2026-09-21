@@ -4,3 +4,6 @@
 *.key
 secrets/
 reports/
+node_modules/
+*.tgz
+.mcpregistry_*

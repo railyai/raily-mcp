@@ -1,21 +1,6 @@
-# ClawHub publish (org `railyai` only)
+# ClawHub package
 
-Do **not** publish as personal `nttylock`. Slug must be `@railyai/raily`.
-
-User install:
-
-```bash
-openclaw plugins install clawhub:@railyai/raily
-```
-
-```bash
-# from this repo root, after clawhub login
-clawhub whoami
-clawhub package validate .
-clawhub package publish . --family bundle-plugin --owner railyai --dry-run --json
-# abort unless JSON owner/scope is railyai and name is @railyai/raily
-clawhub package publish . --family bundle-plugin --owner railyai --wait
-```
-
-Family is **bundle-plugin** (Agent Plugins pack). Not a Code plugin (no JS
-runtime). Not skill-only upload.
+The canonical publication procedure is [PUBLISHING.md](PUBLISHING.md#clawhub-bundle).
+Owner: **railyai**. Package: **@railyai/raily**. Family: **bundle-plugin**.
+Use package-aware ClawHub CLI 0.23.3; the old skill-only `inspect` command cannot
+verify this bundle's publication. The bundle contains no local JavaScript server.

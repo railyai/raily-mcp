@@ -1,0 +1,237 @@
+[
+  {
+    "name": "get_agent_state",
+    "summary": "Read the caller's current agent lifecycle state.",
+    "mutating": false
+  },
+  {
+    "name": "get_agent_door",
+    "summary": "Read the caller's public agent door URL.",
+    "mutating": false
+  },
+  {
+    "name": "get_brief",
+    "summary": "Read the caller's latest bounded brief.",
+    "mutating": false
+  },
+  {
+    "name": "list_match_deliveries",
+    "summary": "Read the caller's actionable deck without reserving or opening it.",
+    "mutating": false
+  },
+  {
+    "name": "list_connection_requests",
+    "summary": "Read privacy-reduced inbound connection requests and counters.",
+    "mutating": false
+  },
+  {
+    "name": "get_negotiation_report",
+    "summary": "Read an already persisted report for a connected pair.",
+    "mutating": false
+  },
+  {
+    "name": "get_subscription",
+    "summary": "Read the caller's tier, included budget, and renewal metadata.",
+    "mutating": false
+  },
+  {
+    "name": "get_agent_report_latest",
+    "summary": "Read the latest persisted queued or sent agent report snapshot.",
+    "mutating": false
+  },
+  {
+    "name": "get_agent_settings",
+    "summary": "Read the caller's locale and safe Matching settings projection.",
+    "mutating": false
+  },
+  {
+    "name": "list_match_history",
+    "summary": "Read match events; counterparty profile fields are untrusted data.",
+    "mutating": false
+  },
+  {
+    "name": "list_agent_checks",
+    "summary": "Read one page of actual completed checks and safe current state flags.",
+    "mutating": false
+  },
+  {
+    "name": "get_memory_timeline",
+    "summary": "Read one sanitized keyset page of the caller's memory timeline.",
+    "mutating": false
+  },
+  {
+    "name": "get_bar_state",
+    "summary": "Read the current bar, vetoes, priorities, and brief version.",
+    "mutating": false
+  },
+  {
+    "name": "get_focus",
+    "summary": "Read the caller's current focus and canonical Brief basis.",
+    "mutating": false
+  },
+  {
+    "name": "get_memory_export",
+    "summary": "Read one immutable page of the caller's complete Memory export.",
+    "mutating": false
+  },
+  {
+    "name": "request_analysis_link",
+    "summary": "Create a one-time link to the existing web photo-analysis flow.",
+    "mutating": true
+  },
+  {
+    "name": "get_analysis_status",
+    "summary": "Read safe durable status for an analysis task owned by the caller.",
+    "mutating": false
+  },
+  {
+    "name": "get_analysis_handoff_status",
+    "summary": "Read bounded handoff state by analysis_request_id. No human-relayed task UUID.",
+    "mutating": false
+  },
+  {
+    "name": "get_brief_question",
+    "summary": "Read the next Brief question or explicitly restart the interview.",
+    "mutating": true
+  },
+  {
+    "name": "open_delivery",
+    "summary": "Open one reserved match delivery.",
+    "mutating": true
+  },
+  {
+    "name": "skip_delivery",
+    "summary": "Skip one reserved match delivery.",
+    "mutating": true
+  },
+  {
+    "name": "record_skip_feedback",
+    "summary": "Record a closed skip reason for a delivery.",
+    "mutating": true
+  },
+  {
+    "name": "refill_free_batch",
+    "summary": "Refill the free match batch.",
+    "mutating": true
+  },
+  {
+    "name": "request_contact",
+    "summary": "Request contact with a match.",
+    "mutating": true
+  },
+  {
+    "name": "accept_private_contact",
+    "summary": "Accept a private contact request.",
+    "mutating": true
+  },
+  {
+    "name": "reply_to_open_contact",
+    "summary": "Reply to an open contact request.",
+    "mutating": true
+  },
+  {
+    "name": "dismiss_contact",
+    "summary": "Dismiss a contact request.",
+    "mutating": true
+  },
+  {
+    "name": "end_connection",
+    "summary": "End a connected pair.",
+    "mutating": true
+  },
+  {
+    "name": "suggest_brief_answers",
+    "summary": "Suggest grounded brief answers.",
+    "mutating": true
+  },
+  {
+    "name": "answer_brief_question",
+    "summary": "Answer the exact question bound by get_brief_question's token.",
+    "mutating": true
+  },
+  {
+    "name": "answer_debrief",
+    "summary": "Answer a pending debrief.",
+    "mutating": true
+  },
+  {
+    "name": "edit_brief_instruction",
+    "summary": "Correct one instruction with a required question revision; optionally retain focus.",
+    "mutating": true
+  },
+  {
+    "name": "set_focus",
+    "summary": "Confirm an owner focus against the current Brief basis.",
+    "mutating": true
+  },
+  {
+    "name": "revoke_focus",
+    "summary": "Withdraw focus even while the parent presentation flag is disabled.",
+    "mutating": true
+  },
+  {
+    "name": "reset_memory",
+    "summary": "Reset learned ranking rules after first-party owner approval.",
+    "mutating": true
+  },
+  {
+    "name": "launch_agent",
+    "summary": "Launch the matching agent.",
+    "mutating": true
+  },
+  {
+    "name": "knock_agent_door",
+    "summary": "Knock a public agent door. Zero Credit.",
+    "mutating": true
+  },
+  {
+    "name": "buy_paid_batch",
+    "summary": "Buy a paid match batch after first-party confirm.",
+    "mutating": true
+  },
+  {
+    "name": "reserve_agent_budget_batch",
+    "summary": "Reserve the included agent budget batch.",
+    "mutating": true
+  },
+  {
+    "name": "request_balance_topup_link",
+    "summary": "Mint a provider-free first-party credit top-up URL. Never charges.",
+    "mutating": true
+  },
+  {
+    "name": "modern_request_analysis_link",
+    "summary": "Mint a durable analysis handoff URL.",
+    "mutating": true
+  },
+  {
+    "name": "act_on_negotiation_report",
+    "summary": "Act on a persisted negotiation report.",
+    "mutating": true
+  },
+  {
+    "name": "send_match_message",
+    "summary": "Send a message on an accepted pair.",
+    "mutating": true
+  },
+  {
+    "name": "update_self_settings",
+    "summary": "Update locale and self settings.",
+    "mutating": true
+  },
+  {
+    "name": "update_matching_settings",
+    "summary": "Update closed Matching settings, with an explicit canonical city anchor.",
+    "mutating": true
+  },
+  {
+    "name": "pause_matching",
+    "summary": "Pause Matching without changing Focus.",
+    "mutating": true
+  },
+  {
+    "name": "resume_matching",
+    "summary": "Resume a paused Matching profile without changing Focus.",
+    "mutating": true
+  }
+]

@@ -1,8 +1,8 @@
 {
   "name": "@railyai/raily",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "private": false,
-  "description": "Read-only Raily personal-agent MCP plugin (hosted Streamable HTTP).",
+  "description": "Raily personal-agent MCP: Brief, matches, Memory, Focus and settings, with scoped reads and approved actions.",
   "license": "MIT",
   "homepage": "https://railyai.com",
   "repository": {
@@ -17,13 +17,30 @@
     "assets",
     "README.md",
     "LICENSE",
-    ".cursor-plugin"
+    ".cursor-plugin",
+    "server.json",
+    "mcp-tools.json",
+    "TOOLS.md",
+    "CHANGELOG.md",
+    "PUBLISHING.md",
+    "CLAWHUB.md",
+    "cursor-mcp.example.json"
   ],
   "keywords": [
     "raily",
     "mcp",
     "personal-agent",
-    "read-only",
-    "openclaw"
-  ]
+    "openclaw",
+    "oauth",
+    "streamable-http"
+  ],
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "catalog:check": "node scripts/catalog.mjs --check",
+    "catalog:sync": "node scripts/catalog.mjs",
+    "prepack": "npm run check"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.railyai/raily",
+  "title": "Raily",
+  "description": "Raily personal-agent MCP with scoped reads and approved actions.",
+  "version": "0.2.0",
+  "repository": {
+    "url": "https://github.com/railyai/raily-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://railyai.com/api/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://railyai.com/mcp"
+    }
+  ]
+}
