@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Connect path: native Streamable HTTP to `https://railyai.com/mcp`; stdio-only
+  clients use `npx -y mcp-remote https://railyai.com/mcp`. No first-party
+  `npx railyai` runtime. npm remains optional metadata, not a connector.
+
 ## 0.2.0 — 2026-09-21
 
 - Describe the current 47-tool server catalog, including scoped actions, instead

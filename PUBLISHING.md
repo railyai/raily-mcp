@@ -64,19 +64,22 @@ files. Verify the exact name/version/remote URL in the returned registry record.
 
 ## npm artifact (optional distribution)
 
-The npm name in package.json does not prove an npm publication. A scoped npm
-artifact is a downloadable declarative bundle, not an `npx` executable and not
-required by the remote MCP Registry entry. It requires npm organization rights.
+Clients connect to **https://railyai.com/mcp**. Native Streamable HTTP clients
+use the URL. Stdio-only clients use `npx -y mcp-remote https://railyai.com/mcp`.
+Do not add a first-party `bin` or a branded `npx railyai` wrapper: it would
+re-export that same bridge.
+
+The `package.json` name `@railyai/raily` is the ClawHub / Agent Plugins identity.
+It does not prove an npm publication and is not a connect path. Unscoped npm name
+`raily` collides with a different product (`@raily/sdk` / raily.ai). Unscoped
+`railyai` is unused; publishing it still needs the `citedy` account OTP (granular
+tokens cannot bypass 2FA). An npm tarball would be metadata only.
 
 ```bash
 npm whoami
 npm pack --dry-run
-npm publish --access public
-npm view @railyai/raily version dist.integrity --json
+# npm publish --access public   # optional metadata; requires OTP
 ```
-
-If npm authentication or an OTP is required, finish the owner's npm login/2FA.
-Do not borrow another publisher, create a paid organization or bypass 2FA.
 
 ## Client marketplaces
 

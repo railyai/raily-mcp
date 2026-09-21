@@ -1,9 +1,9 @@
 # Raily MCP
 
-Connect your Raily personal agent to an MCP client through the hosted endpoint
-**https://railyai.com/mcp** (Streamable HTTP). This repository is the
-`@railyai/raily` Agent Plugins bundle; it does not run a local MCP server and has
-no `npx raily` command.
+Connect your Raily personal agent through the hosted endpoint
+**https://railyai.com/mcp** (Streamable HTTP). The server runs there; this
+repository is metadata (tool catalog, plugin manifests, registry `server.json`).
+There is no first-party `npx raily` / `npx railyai` runtime.
 
 ## Capabilities and permissions
 
@@ -77,7 +77,7 @@ Grok run used a separately provisioned Raily credential; do not infer browser OA
 or Grok Bot marketplace acceptance from that result. Never put a literal bearer
 secret in `--header` arguments or shared project configuration.
 
-### Other clients
+### Other HTTP clients
 
 In a client that supports remote Streamable HTTP MCP, add
 `https://railyai.com/mcp` and complete its browser OAuth flow when supported.
@@ -86,23 +86,37 @@ Follow the vendor's current setup rather than reusing another client's CLI flags
 Manage/revoke Raily access at [Integrations](https://railyai.com/integrations/).
 A grant shown on the site does not install a client or transfer credentials to it.
 
-## Install the bundle
+### Stdio-only clients
 
-The ClawHub package is **`@railyai/raily`**, owned by **`railyai`**:
+If the client can only spawn a local stdio MCP process, use the existing
+[`mcp-remote`](https://www.npmjs.com/package/mcp-remote) bridge. Do not publish or
+install a first-party Raily CLI for this:
+
+```json
+{
+  "mcpServers": {
+    "raily": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://railyai.com/mcp"]
+    }
+  }
+}
+```
+
+Complete the browser OAuth flow that `mcp-remote` opens. A branded `npx railyai`
+wrapper would call the same command.
+
+## Plugin listing
+
+Agent Plugins / ClawHub package **`@railyai/raily`** (owner **`railyai`**) is a
+portable manifest listing. It is not required to reach the hosted MCP:
 
 ```bash
 openclaw plugins install clawhub:@railyai/raily
 ```
 
-For a Git checkout, use a compatible Agent Plugins client's local import, or:
-
-```bash
-openclaw plugins install /path/to/raily-mcp
-```
-
-Cursor Marketplace submission and MCP Registry publication are separate from
-ClawHub publication. Do not treat a source repository or release tag as a catalog
-listing. See [PUBLISHING.md](PUBLISHING.md) for verification commands and channels.
+Cursor Marketplace, official MCP Registry and npm are separate channels. See
+[PUBLISHING.md](PUBLISHING.md).
 
 ## Compatibility evidence
 
@@ -117,7 +131,8 @@ Later runner assertions received hermetic coverage without a new native wave.
 ## Maintain and validate
 
 Node.js 22 or later is needed only for repository validation, not to use the
-remote server. The published bundle has no JS runtime or dependencies.
+remote server. The bundle has no JS runtime or dependencies. Stdio clients that
+run `mcp-remote` pull that tool from npm on demand.
 
 ```bash
 npm run catalog:sync   # refresh generated catalog from the live canonical registry mirror

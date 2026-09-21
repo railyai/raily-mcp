@@ -18,9 +18,11 @@ human guide is https://railyai.com/api/. Never invent arguments or tool names.
 
 ## Connect and authorize
 
-If the connection is absent, use the client's native remote-MCP setup or install
-`@railyai/raily` from ClawHub under owner `railyai`. Complete supported browser OAuth
-consent. Provider login, plugin installation and Raily authorization are distinct.
+If the connection is absent, add `https://railyai.com/mcp` with the client's
+native Streamable HTTP setup. For a stdio-only client, spawn
+`npx -y mcp-remote https://railyai.com/mcp`. There is no first-party `npx railyai`
+command. Complete supported browser OAuth consent. Provider login and Raily
+authorization are distinct.
 The default personal key is limited to `agent:read`; discovery does not grant
 permission to call every read or write. Follow an insufficient-scope result into
 the supported consent/step-up flow. Never bypass refusal or change credentials to
