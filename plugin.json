@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "raily-mcp",
-  "version": "0.1.3",
-  "description": "Read-only Raily personal-agent MCP: status, brief, matches, intros, memory, analysis, and billing status.",
+  "version": "0.2.0",
+  "description": "Raily personal-agent MCP: Brief, matches, Memory, Focus and settings, with scoped reads and approved actions.",
   "author": {
     "name": "Raily AI",
     "url": "https://railyai.com"
@@ -14,6 +14,7 @@
     "raily",
     "mcp",
     "personal-agent",
-    "read-only"
+    "oauth",
+    "streamable-http"
   ]
 }

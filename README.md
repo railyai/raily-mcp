@@ -1,73 +1,42 @@
 # Raily MCP
 
-Read-only [Agent Plugin](https://agent-plugins.org) for the Raily personal agent. It points at the hosted Streamable HTTP MCP at `https://railyai.com/mcp`.
+Connect your Raily personal agent to an MCP client through the hosted endpoint
+**https://railyai.com/mcp** (Streamable HTTP). This repository is the
+`@railyai/raily` Agent Plugins bundle; it does not run a local MCP server and has
+no `npx raily` command.
 
-Scopes are **read-only**. The plugin never writes or changes user data. No API keys, bearer tokens, or secrets belong in this repo.
+## Capabilities and permissions
 
-OAuth always happens in the **browser**. Do not paste tokens into chat or config.
+The current server exposes **47 registered tools**: status, Brief, match cards and
+contacts, Memory, Focus, settings, matching controls, and analysis/top-up handoffs.
+See the generated [complete tool catalog](TOOLS.md), the [API guide](https://railyai.com/api/)
+and [live agent guide](https://railyai.com/llms.txt).
 
-## One-click on the site
+Supported MCP revisions `2025-06-18`, `2025-11-25` and `2026-07-28` share the
+registered catalog. **Discovery is not permission:** each call requires its
+corresponding scope, supported credential type and enabled server capability.
+The default personal key from [Keys](https://railyai.com/integrations/keys/)
+currently has `agent:read` only; it does not authorize every listed read or write.
+Use browser OAuth consent/step-up for additional supported scopes.
 
-https://railyai.com/integrations — Connect next to Grok, Codex, Claude Code, or Cursor. That marks the grant **Connected** and you can Revoke there.
+Actions can change your data. Ask the agent for the intended action explicitly;
+it must follow the server's approval and idempotency contracts. Paid actions and
+Memory reset require their first-party approval flows. A top-up/analysis link
+opens a first-party flow; it is not proof of payment or completed analysis.
 
-The site grant does **not** put tokens into Cursor. The assistant still does its own OAuth (plugin or CLI below). Same login, same read-only scopes.
+## Connect directly
 
-## OpenClaw / ClawHub
+Use the official vendor client. Verify its executable provenance and version;
+third-party `grok-dev` is not official xAI Grok. Authentication to the LLM provider
+and authorization to Raily are separate. Never paste tokens into chat, commit
+credentials, or put bearer values on a command line. Keep them in a supported
+credential store or owner-only environment file. Never reset Keychain for setup.
 
-This repo is an **Agent Plugins bundle** (not a native OpenClaw code plugin).
-OpenClaw maps `plugin.json` + `mcp.json` + `skills/raily/SKILL.md`.
+### Cursor Agent
 
-After the org listing is live (owner GO, publisher **`railyai`**, never
-`nttylock`):
-
-```bash
-openclaw plugins install clawhub:@railyai/raily
-```
-
-Until then, install from this GitHub checkout:
-
-```bash
-openclaw plugins install /path/to/raily-mcp
-```
-
-## Grok Bot
-
-There is no one-click on [x.ai/bot](https://x.ai/bot). In the Grok Bot app:
-
-1. **Settings → Plugins → Add**
-2. Custom MCP named `Raily`, URL `https://railyai.com/mcp` (no headers)
-3. Authorize in the browser → Approve
-4. In chat, type `@` and attach Raily
-
-Marketplace listing is **not submitted**. Do not tell users to `npx raily`.
-
-## Install the plugin (Cursor / developers)
-
-1. Official catalog later (owner GO). Until then:
-   - Team Marketplace import of `https://github.com/railyai/raily-mcp`, or
-   - symlink: `ln -s /path/to/raily-mcp ~/.cursor/plugins/local/raily-mcp`
-2. Enable **Raily MCP**.
-3. The client opens a browser. Sign in to Raily and Approve.
-
-`mcp.json` in this repo uses Agent Plugins `type: streamable-http`. That is what a catalog plugin install reads. Grok Bot custom MCP only needs the URL.
-
-## Cursor CLI
-
-Cursor CLI **drops** `type: streamable-http` (and `type: remote`). Use **url only**:
-
-```json
-{
-  "mcpServers": {
-    "raily": {
-      "url": "https://railyai.com/mcp"
-    }
-  }
-}
-```
-
-Put that in the project `.cursor/mcp.json` or `~/.cursor/mcp.json`. Copy from [`cursor-mcp.example.json`](cursor-mcp.example.json).
-
-Then:
+Merge the URL-only entry from [`cursor-mcp.example.json`](cursor-mcp.example.json)
+into your project `.cursor/mcp.json` or private `~/.cursor/mcp.json`, preserving
+other servers. Then use the official **cursor-agent**, not the editor launcher:
 
 ```bash
 cursor-agent mcp enable raily
@@ -75,52 +44,88 @@ cursor-agent mcp login raily
 cursor-agent mcp list-tools raily
 ```
 
-There is no `cursor mcp add`. If `mcp login` fails, fallback:
+Complete browser consent. Portable plugin `mcp.json` uses `streamable-http`;
+Cursor Agent's native config uses the URL-only example. Do not copy one format
+into the other. Installation in a marketplace is not authentication.
+
+### Codex CLI
 
 ```bash
-npx -y mcp-remote https://railyai.com/mcp
+codex mcp add raily --url https://railyai.com/mcp
+codex mcp login raily
+codex mcp list
 ```
 
-Or point `mcp.json` at that command:
+Complete browser consent. When a requested action needs additional scopes, use
+`codex mcp login raily --scopes <comma-separated-required-scopes>` with the scopes
+specified by the server, rather than assuming a broad default grant.
 
-```json
-{
-  "mcpServers": {
-    "raily": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://railyai.com/mcp"]
-    }
-  }
-}
+### Official xAI Grok
+
+On the certified Mac install the official executable was `~/.grok/bin/grok`.
+Check your actual vendor installation, then configure the direct HTTP transport:
+
+```bash
+grok mcp add --transport http raily https://railyai.com/mcp
+grok mcp doctor raily --json
 ```
 
-## Revoke
+These commands configure/check the connection; they do not themselves guarantee
+OAuth completion. If authentication is required, complete the client's supported
+auth flow or configure its private environment-backed bearer header. The certified
+Grok run used a separately provisioned Raily credential; do not infer browser OAuth
+or Grok Bot marketplace acceptance from that result. Never put a literal bearer
+secret in `--header` arguments or shared project configuration.
 
-https://railyai.com/integrations — Revoke is instant.
+### Other clients
 
-## What it can read
+In a client that supports remote Streamable HTTP MCP, add
+`https://railyai.com/mcp` and complete its browser OAuth flow when supported.
+Claude Code/Desktop and Grok Bot UI are not certified by this bundle release.
+Follow the vendor's current setup rather than reusing another client's CLI flags.
+Manage/revoke Raily access at [Integrations](https://railyai.com/integrations/).
+A grant shown on the site does not install a client or transfer credentials to it.
 
-- Agent status
-- Brief
-- Matches
-- Intros
-- Memory
-- Analysis status
-- Billing status
+## Install the bundle
 
-It cannot update the brief, accept or decline intros, change billing, or otherwise mutate account data.
+The ClawHub package is **`@railyai/raily`**, owned by **`railyai`**:
 
-## Layout
-
-```text
-raily-mcp/
-├── package.json                # npm name @railyai/raily (ClawHub scope)
-├── plugin.json                 # Agent Plugins 1.0.0 manifest
-├── mcp.json                    # Hosted HTTP MCP for plugins (streamable-http)
-├── cursor-mcp.example.json     # Cursor CLI: url only
-├── .cursor-plugin/plugin.json  # Cursor marketplace compatibility
-├── skills/raily/SKILL.md
-├── assets/logo.png
-├── LICENSE
-└── README.md
+```bash
+openclaw plugins install clawhub:@railyai/raily
 ```
+
+For a Git checkout, use a compatible Agent Plugins client's local import, or:
+
+```bash
+openclaw plugins install /path/to/raily-mcp
+```
+
+Cursor Marketplace submission and MCP Registry publication are separate from
+ClawHub publication. Do not treat a source repository or release tag as a catalog
+listing. See [PUBLISHING.md](PUBLISHING.md) for verification commands and channels.
+
+## Compatibility evidence
+
+The Raily server's isolated 2026-09-21 certification exercised official Grok
+1.0.34, Codex 0.154.0 and Cursor Agent 2026.08.11-e8db854 (composer-2.5), including
+native settings write/read-back, replay/conflict, scope refusal and revocation.
+This describes that recorded server/client wave, not every future client version
+or installation of this bundle. Grok doctor exposes a count, not all tool names;
+Codex JSON does not expose its complete negotiated catalog. Claude was excluded.
+Later runner assertions received hermetic coverage without a new native wave.
+
+## Maintain and validate
+
+Node.js 22 or later is needed only for repository validation, not to use the
+remote server. The published bundle has no JS runtime or dependencies.
+
+```bash
+npm run catalog:sync   # refresh generated catalog from the live canonical registry mirror
+npm run check          # offline manifest/version/catalog checks
+npm run catalog:check  # fail if the server catalog has changed
+mcp-publisher validate server.json
+npm pack --dry-run
+```
+
+Release all manifest versions together. [CHANGELOG.md](CHANGELOG.md) records the
+bundle changes; the server remains independently deployed at the stable endpoint.
