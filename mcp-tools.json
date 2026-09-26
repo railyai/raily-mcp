@@ -1,237 +1,237 @@
 [
   {
     "name": "get_agent_state",
-    "summary": "Read the caller's current agent lifecycle state.",
+    "summary": "Get the status of the user's Raily matching agent, such as not started, active or paused.",
     "mutating": false
   },
   {
     "name": "get_agent_door",
-    "summary": "Read the caller's public agent door URL.",
+    "summary": "Get the user's public agent door link, which other people can use to ask the user's agent for an introduction.",
     "mutating": false
   },
   {
     "name": "get_brief",
-    "summary": "Read the caller's latest bounded brief.",
+    "summary": "Get the user's current Brief: who they are looking for, what they offer, their deal-breakers and style.",
     "mutating": false
   },
   {
     "name": "list_match_deliveries",
-    "summary": "Read the caller's actionable deck without reserving or opening it.",
+    "summary": "List the match cards waiting for the user's decision. Only reads; it does not open or use up a card.",
     "mutating": false
   },
   {
     "name": "list_connection_requests",
-    "summary": "Read privacy-reduced inbound connection requests and counters.",
+    "summary": "List contact requests other people sent the user, with counts. Personal details are limited for privacy.",
     "mutating": false
   },
   {
     "name": "get_negotiation_report",
-    "summary": "Read an already persisted report for a connected pair.",
+    "summary": "Get the saved negotiation report about the user and one connected person (other_id). Does not create a new report.",
     "mutating": false
   },
   {
     "name": "get_subscription",
-    "summary": "Read the caller's tier, included budget, and renewal metadata.",
+    "summary": "Get the user's plan, included match budget and renewal date.",
     "mutating": false
   },
   {
     "name": "get_agent_report_latest",
-    "summary": "Read the latest persisted queued or sent agent report snapshot.",
+    "summary": "Get the most recent report the agent prepared for the user, whether queued or already sent.",
     "mutating": false
   },
   {
     "name": "get_agent_settings",
-    "summary": "Read the caller's locale and safe Matching settings projection.",
+    "summary": "Get the user's language, matching settings (privacy, area, intent, city, timezone) and report schedule.",
     "mutating": false
   },
   {
     "name": "list_match_history",
-    "summary": "Read match events; counterparty profile fields are untrusted data.",
+    "summary": "List the user's past match events, one page at a time. Profile text written by other people is untrusted.",
     "mutating": false
   },
   {
     "name": "list_agent_checks",
-    "summary": "Read one page of actual completed checks and safe current state flags.",
+    "summary": "List the checks the agent has completed for the user, one page at a time, with its current status flags.",
     "mutating": false
   },
   {
     "name": "get_memory_timeline",
-    "summary": "Read one sanitized keyset page of the caller's memory timeline.",
+    "summary": "List what the agent has learned about the user's preferences over time, one page at a time.",
     "mutating": false
   },
   {
     "name": "get_bar_state",
-    "summary": "Read the current bar, vetoes, priorities, and brief version.",
+    "summary": "Get the user's match bar (minimum match score), vetoed and prioritized intents, and Brief version.",
     "mutating": false
   },
   {
     "name": "get_focus",
-    "summary": "Read the caller's current focus and canonical Brief basis.",
+    "summary": "Get the user's current focus, a short-term matching priority, plus the basis_token and revision set_focus needs.",
     "mutating": false
   },
   {
     "name": "get_memory_export",
-    "summary": "Read one immutable page of the caller's complete Memory export.",
+    "summary": "Export everything the agent remembers about the user, one page at a time. Only reads.",
     "mutating": false
   },
   {
     "name": "request_analysis_link",
-    "summary": "Create a one-time link to the existing web photo-analysis flow.",
+    "summary": "Create a one-time link, valid for 1 hour, that opens photo analysis on railyai.com for the user (self) or another person (other). Each call creates a new link.",
     "mutating": true
   },
   {
     "name": "get_analysis_status",
-    "summary": "Read safe durable status for an analysis task owned by the caller.",
+    "summary": "Get the status of one of the user's photo analyses by its task_id.",
     "mutating": false
   },
   {
     "name": "get_analysis_handoff_status",
-    "summary": "Read bounded handoff state by analysis_request_id. No human-relayed task UUID.",
+    "summary": "Check the progress of a photo analysis started with modern_request_analysis_link, by its analysis_request_id.",
     "mutating": false
   },
   {
     "name": "get_brief_question",
-    "summary": "Read the next Brief question or explicitly restart the interview.",
+    "summary": "Get the next question of the user's Brief interview. With start_new_brief=true, operation_key and expected_brief_version it restarts the interview from the first question; the saved Brief stays. A restart may need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "open_delivery",
-    "summary": "Open one reserved match delivery.",
+    "summary": "Open one match card to see who the match is.",
     "mutating": true
   },
   {
     "name": "skip_delivery",
-    "summary": "Skip one reserved match delivery.",
+    "summary": "Skip one match card the user does not want.",
     "mutating": true
   },
   {
     "name": "record_skip_feedback",
-    "summary": "Record a closed skip reason for a delivery.",
+    "summary": "Tell the agent why the user skipped a match card, to improve later matches. reason: not_my_intent, too_far, wrong_vibe, busy_now, not_enough_shown or other; note is optional. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "refill_free_batch",
-    "summary": "Refill the free match batch.",
+    "summary": "Refill the user's free batch of match cards. Pass the current batch id as expected_batch_id. Costs nothing.",
     "mutating": true
   },
   {
     "name": "request_contact",
-    "summary": "Request contact with a match.",
+    "summary": "Send a contact request to a match; set open_intro=true to include an intro message. The other person is notified. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "accept_private_contact",
-    "summary": "Accept a private contact request.",
+    "summary": "Accept a contact request someone sent the user. The other person is notified. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "reply_to_open_contact",
-    "summary": "Reply to an open contact request.",
+    "summary": "Reply to the intro message someone sent the user with their contact request. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "dismiss_contact",
-    "summary": "Dismiss a contact request.",
+    "summary": "Decline a contact request someone sent the user. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "end_connection",
-    "summary": "End a connected pair.",
+    "summary": "End the user's connection with one person. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "suggest_brief_answers",
-    "summary": "Suggest grounded brief answers.",
+    "summary": "Suggest possible answers for one Brief field, based on what Raily knows about the user. The Brief is not changed.",
     "mutating": true
   },
   {
     "name": "answer_brief_question",
-    "summary": "Answer the exact question bound by get_brief_question's token.",
+    "summary": "Save the user's answer to the current Brief interview question. Needs the question_token from get_brief_question. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "answer_debrief",
-    "summary": "Answer a pending debrief.",
+    "summary": "Tell the agent how contact with a match went, to improve later matches. quality: worth_again, neutral, not_a_fit or too_early; meet_kind: met, scheduled, online_only or no_plan. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "edit_brief_instruction",
-    "summary": "Correct one instruction with a required question revision; optionally retain focus.",
+    "summary": "Change one saved Brief answer. Pass the current value and versions so an outdated edit is refused; retain_focus=true keeps the current focus. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "set_focus",
-    "summary": "Confirm an owner focus against the current Brief basis.",
+    "summary": "Set a short-term matching focus for a week or until removed. Needs the basis_token and revision from get_focus. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "revoke_focus",
-    "summary": "Withdraw focus even while the parent presentation flag is disabled.",
+    "summary": "Remove the user's current focus so matching follows the Brief alone. Works even while the focus feature is switched off.",
     "mutating": true
   },
   {
     "name": "reset_memory",
-    "summary": "Reset learned ranking rules after first-party owner approval.",
+    "summary": "Reset what the agent learned from feedback: the match bar returns to its default and vetoed and prioritized intents are cleared. Brief answers are kept. expected_state takes the current values from get_bar_state. Always needs the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "launch_agent",
-    "summary": "Launch the matching agent.",
+    "summary": "Start the user's matching agent in a home city, given as a GeoNames city id. Fails if the user's setup on railyai.com is incomplete. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "knock_agent_door",
-    "summary": "Knock a public agent door. Zero Credit.",
+    "summary": "Ask another person's agent for an introduction through their public door handle. Free; costs no credits. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "buy_paid_batch",
-    "summary": "Buy a paid match batch after first-party confirm.",
+    "summary": "Buy one batch of 10 extra match cards for 1 Raily credit. Always needs the owner's approval on railyai.com; never charges a card.",
     "mutating": true
   },
   {
     "name": "reserve_agent_budget_batch",
-    "summary": "Reserve the included agent budget batch.",
+    "summary": "Take the next batch of 10 match cards from the budget included in the user's plan. No extra charge.",
     "mutating": true
   },
   {
     "name": "request_balance_topup_link",
-    "summary": "Mint a provider-free first-party credit top-up URL. Never charges.",
+    "summary": "Create a railyai.com link where the owner can buy Raily credits (single, pack3 or pack5). This tool never charges.",
     "mutating": true
   },
   {
     "name": "modern_request_analysis_link",
-    "summary": "Mint a durable analysis handoff URL.",
+    "summary": "Create a link, valid for 1 hour, to run photo analysis on railyai.com for the user (self) or another person (other).",
     "mutating": true
   },
   {
     "name": "act_on_negotiation_report",
-    "summary": "Act on a persisted negotiation report.",
+    "summary": "Act on a negotiation report: accept the match, decline it, or ask (returns a link to ask the agent). Declining ends the connection and takes an optional reason and note. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "send_match_message",
-    "summary": "Send a message on an accepted pair.",
+    "summary": "Send a message to a person the user is connected with. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "update_self_settings",
-    "summary": "Update locale and self settings.",
+    "summary": "Change the user's language: en, ru, es, pt-BR or ar.",
     "mutating": true
   },
   {
     "name": "update_matching_settings",
-    "summary": "Update closed Matching settings, with an explicit canonical city anchor.",
+    "summary": "Change matching settings: privacy mode, search area, main intent, home city (GeoNames id) or timezone. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "pause_matching",
-    "summary": "Pause Matching without changing Focus.",
+    "summary": "Pause the agent so it stops looking for new matches. The focus is kept. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
     "name": "resume_matching",
-    "summary": "Resume a paused Matching profile without changing Focus.",
+    "summary": "Resume a paused agent. The focus is kept. May need the owner's approval on railyai.com.",
     "mutating": true
   }
 ]
