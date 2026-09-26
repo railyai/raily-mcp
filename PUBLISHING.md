@@ -37,7 +37,7 @@ Check the dry-run name, owner, family, version, endpoint and archive file list.
 After the reviewed commit is tagged and pushed, publish from that exact checkout:
 
 ```bash
-npx --yes clawhub@0.23.3 package publish . --family bundle-plugin --owner railyai --source-repo railyai/raily-mcp --source-commit "$(git rev-parse HEAD)" --source-ref v0.2.0 --wait --json
+npx --yes clawhub@0.23.3 package publish . --family bundle-plugin --owner railyai --source-repo railyai/raily-mcp --source-commit "$(git rev-parse HEAD)" --source-ref v0.2.1 --wait --json
 npx --yes clawhub@0.23.3 package inspect @railyai/raily --json
 ```
 

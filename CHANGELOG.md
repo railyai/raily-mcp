@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.2.1 — 2026-09-26
+
+- Listing copy for the Cursor Marketplace: describe Raily as growing your
+  circle through AI agents.
+- Sync the tool catalog with the server (act_on_negotiation_report: a decline
+  needs a reason).
+
 - Connect path: native Streamable HTTP to `https://railyai.com/mcp`; stdio-only
   clients use `npx -y mcp-remote https://railyai.com/mcp`. No first-party
   `npx railyai` runtime. npm remains optional metadata, not a connector.

@@ -1,7 +1,7 @@
 ---
 name: raily
 description: Use Raily MCP for the user's personal-agent status, Brief, matches, contacts, Memory, Focus, settings and matching actions. Connect to https://railyai.com/mcp; authorize each operation with its required scopes and approvals.
-version: 0.2.0
+version: 0.2.1
 homepage: https://railyai.com
 metadata:
   openclaw:

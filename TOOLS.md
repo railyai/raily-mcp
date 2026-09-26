@@ -51,7 +51,7 @@ idempotency and feature-availability rules.
 | `reserve_agent_budget_batch` | Yes | Take the next batch of 10 match cards from the budget included in the user's plan. No extra charge. |
 | `request_balance_topup_link` | Yes | Create a railyai.com link where the owner can buy Raily credits (single, pack3 or pack5). This tool never charges. |
 | `modern_request_analysis_link` | Yes | Create a link, valid for 1 hour, to run photo analysis on railyai.com for the user (self) or another person (other). |
-| `act_on_negotiation_report` | Yes | Act on a negotiation report: accept the match, decline it, or ask (returns a link to ask the agent). Declining ends the connection and takes an optional reason and note. May need the owner's approval on railyai.com. |
+| `act_on_negotiation_report` | Yes | Act on a negotiation report: accept the match, decline it, or ask (returns a link to ask the agent). Declining ends the connection and needs a reason; the note is optional. May need the owner's approval on railyai.com. |
 | `send_match_message` | Yes | Send a message to a person the user is connected with. May need the owner's approval on railyai.com. |
 | `update_self_settings` | Yes | Change the user's language: en, ru, es, pt-BR or ar. |
 | `update_matching_settings` | Yes | Change matching settings: privacy mode, search area, main intent, home city (GeoNames id) or timezone. May need the owner's approval on railyai.com. |

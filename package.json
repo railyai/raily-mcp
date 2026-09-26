@@ -1,8 +1,8 @@
 {
   "name": "@railyai/raily",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
-  "description": "Raily personal-agent MCP: Brief, matches, Memory, Focus and settings, with scoped reads and approved actions.",
+  "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing.",
   "license": "MIT",
   "homepage": "https://railyai.com",
   "repository": {

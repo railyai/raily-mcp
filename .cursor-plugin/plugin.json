@@ -1,8 +1,8 @@
 {
   "name": "raily-mcp",
   "displayName": "Raily MCP",
-  "version": "0.2.0",
-  "description": "Raily personal-agent MCP: Brief, matches, Memory, Focus and settings, with scoped reads and approved actions.",
+  "version": "0.2.1",
+  "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing.",
   "author": {
     "name": "Raily AI",
     "url": "https://railyai.com"
@@ -15,7 +15,10 @@
     "mcp",
     "personal-agent",
     "oauth",
-    "streamable-http"
+    "streamable-http",
+    "ai-agents",
+    "networking",
+    "introductions"
   ],
   "logo": "assets/logo.png"
 }

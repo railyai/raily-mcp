@@ -3,7 +3,7 @@
   "name": "io.github.railyai/raily",
   "title": "Raily",
   "description": "Raily personal-agent MCP with scoped reads and approved actions.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": {
     "url": "https://github.com/railyai/raily-mcp",
     "source": "github"

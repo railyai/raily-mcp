@@ -206,7 +206,7 @@
   },
   {
     "name": "act_on_negotiation_report",
-    "summary": "Act on a negotiation report: accept the match, decline it, or ask (returns a link to ask the agent). Declining ends the connection and takes an optional reason and note. May need the owner's approval on railyai.com.",
+    "summary": "Act on a negotiation report: accept the match, decline it, or ask (returns a link to ask the agent). Declining ends the connection and needs a reason; the note is optional. May need the owner's approval on railyai.com.",
     "mutating": true
   },
   {
