@@ -11,6 +11,13 @@
   "homepage": "https://railyai.com",
   "repository": "https://github.com/railyai/raily-mcp",
   "license": "MIT",
+  "privacyPolicyUrl": "https://railyai.com/privacy/",
   "icon": "assets/logo.png",
-  "keywords": ["raily", "personal-agent", "networking", "introductions", "matching"]
+  "keywords": [
+    "raily",
+    "personal-agent",
+    "networking",
+    "introductions",
+    "matching"
+  ]
 }
