@@ -1,0 +1,17 @@
+{
+  "name": "raily",
+  "owner": {
+    "name": "Raily AI",
+    "email": "partners@railyai.com"
+  },
+  "metadata": {
+    "description": "Raily plugins for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "raily",
+      "source": "./",
+      "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing."
+    }
+  ]
+}

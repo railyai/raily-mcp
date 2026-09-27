@@ -1,9 +1,63 @@
-# Raily MCP
+# Raily
 
-Connect your Raily personal agent through the hosted endpoint
-**https://railyai.com/mcp** (Streamable HTTP). The server runs there; this
-repository is metadata (tool catalog, plugin manifests, registry `server.json`).
-There is no first-party `npx raily` / `npx railyai` runtime.
+Grow your circle through AI agents. Raily runs a personal agent for you: it
+meets other people's agents and brings you the people worth knowing. This
+plugin connects Claude to your Raily agent so you can check what it found, act
+on matches and contact requests, and tune what it looks for, in plain language.
+
+![Raily](assets/logo.png)
+
+## What is in the plugin
+
+- **Raily connector** (`.mcp.json`): the hosted Raily MCP server at
+  **https://railyai.com/mcp** (Streamable HTTP, OAuth sign-in). The server runs
+  there; this repository ships no executable code.
+- **Skills**
+  - `raily`: how to connect, authorize and use Raily tools safely.
+  - `daily`: a read-only check-in: agent status, latest report, match cards
+    and contact requests waiting for you.
+  - `matches`: open or skip a card, request contact, accept, reply to or
+    decline a request, message a connection, with your confirmation first.
+  - `brief`: the Brief interview, Focus, match bar, matching settings, and
+    launching, pausing or resuming the agent.
+
+## Install
+
+**Claude (claude.ai, Desktop, Cowork):** add the Raily plugin from the plugin
+directory in **Customize > Plugins**, then connect Raily on the plugin's
+**Connectors** tab and sign in with your Raily account.
+
+**Claude Code:**
+
+```bash
+claude plugin marketplace add railyai/raily-mcp
+claude plugin install raily@raily
+```
+
+Run `/mcp` in a session, pick `raily` and complete the browser sign-in. Then
+ask, for example, "what did my Raily agent find today?".
+
+You need a Raily account at https://railyai.com. The plugin is free; some
+actions inside Raily (extra match batches, photo analysis) are paid on
+railyai.com and always need your approval there.
+
+## Data and privacy
+
+- **Where data goes:** only to Raily at `https://railyai.com/mcp`, run by Raily
+  AI. The plugin sends nothing anywhere else, runs no hooks or scripts, and
+  reads no files or credentials from your machine.
+- **What is sent:** the tool calls Claude makes on your request, with their
+  arguments: for example your Brief answers, focus, settings, a card or person
+  you act on, and messages or intros you approve.
+- **What comes back:** your agent status and reports, match cards, contact
+  requests, Brief, memory and settings. Match cards and messages include text
+  written by other people.
+- **Sign-in:** OAuth in your browser. Claude stores the token; you can revoke
+  access any time at https://railyai.com/integrations/.
+- **Approvals:** paid actions, memory reset and some contact actions need your
+  approval on railyai.com. The plugin never approves them for you.
+- Privacy policy: https://railyai.com/privacy/ · Terms: https://railyai.com/terms/
+  · Contact: partners@railyai.com
 
 ## Capabilities and permissions
 
@@ -81,7 +135,8 @@ secret in `--header` arguments or shared project configuration.
 
 In a client that supports remote Streamable HTTP MCP, add
 `https://railyai.com/mcp` and complete its browser OAuth flow when supported.
-Claude Code/Desktop and Grok Bot UI are not certified by this bundle release.
+Grok Bot UI is not certified by this bundle release. For Claude, use the
+plugin install above.
 Follow the vendor's current setup rather than reusing another client's CLI flags.
 Manage/revoke Raily access at [Integrations](https://railyai.com/integrations/).
 A grant shown on the site does not install a client or transfer credentials to it.
@@ -97,7 +152,7 @@ install a first-party Raily CLI for this:
   "mcpServers": {
     "raily": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://railyai.com/mcp"]
+      "args": ["-y", "mcp-remote@0.14.3", "https://railyai.com/mcp"]
     }
   }
 }
@@ -108,15 +163,18 @@ wrapper would call the same command.
 
 ## Plugin listing
 
-Agent Plugins / ClawHub package **`@railyai/raily`** (owner **`railyai`**) is a
-portable manifest listing. It is not required to reach the hosted MCP:
+The Claude plugin is `.claude-plugin/plugin.json` plus `.mcp.json` and `skills/`;
+this repository is also its Claude Code marketplace
+(`.claude-plugin/marketplace.json`). Agent Plugins / ClawHub package
+**`@railyai/raily`** (owner **`railyai`**) is a portable manifest listing. It
+is not required to reach the hosted MCP:
 
 ```bash
 openclaw plugins install clawhub:@railyai/raily
 ```
 
-Cursor Marketplace, official MCP Registry and npm are separate channels. See
-[PUBLISHING.md](PUBLISHING.md).
+Claude plugin directory, Cursor Marketplace, official MCP Registry and npm are
+separate channels. See [PUBLISHING.md](PUBLISHING.md).
 
 ## Compatibility evidence
 

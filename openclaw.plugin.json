@@ -2,7 +2,7 @@
   "id": "raily",
   "name": "Raily",
   "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "icon": "https://railyai.com/raily-mark.png",
   "configSchema": {
     "type": "object",

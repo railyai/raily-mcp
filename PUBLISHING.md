@@ -37,7 +37,7 @@ Check the dry-run name, owner, family, version, endpoint and archive file list.
 After the reviewed commit is tagged and pushed, publish from that exact checkout:
 
 ```bash
-npx --yes clawhub@0.23.3 package publish . --family bundle-plugin --owner railyai --source-repo railyai/raily-mcp --source-commit "$(git rev-parse HEAD)" --source-ref v0.2.1 --wait --json
+npx --yes clawhub@0.23.3 package publish . --family bundle-plugin --owner railyai --source-repo railyai/raily-mcp --source-commit "$(git rev-parse HEAD)" --source-ref v0.3.0 --wait --json
 npx --yes clawhub@0.23.3 package inspect @railyai/raily --json
 ```
 
@@ -65,7 +65,7 @@ files. Verify the exact name/version/remote URL in the returned registry record.
 ## npm artifact (optional distribution)
 
 Clients connect to **https://railyai.com/mcp**. Native Streamable HTTP clients
-use the URL. Stdio-only clients use `npx -y mcp-remote https://railyai.com/mcp`.
+use the URL. Stdio-only clients use `npx -y mcp-remote@0.14.3 https://railyai.com/mcp`.
 Do not add a first-party `bin` or a branded `npx railyai` wrapper: it would
 re-export that same bridge.
 
@@ -80,6 +80,23 @@ npm whoami
 npm pack --dry-run
 # npm publish --access public   # optional metadata; requires OTP
 ```
+
+## Claude plugin directory
+
+The repository root is the Claude plugin: `.claude-plugin/plugin.json` (name
+`raily`), `.mcp.json` (remote `http` server) and `skills/`.
+`.claude-plugin/marketplace.json` makes the same repository a Claude Code
+marketplace (`claude plugin marketplace add railyai/raily-mcp`).
+
+```bash
+claude plugin validate --strict .
+```
+
+Submit at https://claude.ai/directory/manage (Submit new > Plugin bundle,
+repository `railyai/raily-mcp`, default branch). Use **Validate**, fix every
+Blocking finding, then continue. The directory tracks `master`: every merged
+commit is scanned as a new version, so raise `version` in all manifests with
+each release. The MCP server itself is a separate connector listing.
 
 ## Client marketplaces
 

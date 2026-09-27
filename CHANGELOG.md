@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 0.3.0 — 2026-09-27
+
+- Claude plugin: `.claude-plugin/plugin.json` (name `raily`), `.mcp.json` with
+  the remote `http` server, and a single-plugin Claude Code marketplace
+  (`claude plugin marketplace add railyai/raily-mcp`).
+- New task skills: `daily` (read-only check-in), `matches` (cards and contact
+  requests) and `brief` (Brief, Focus and settings).
+- README: Claude install, data and privacy disclosure; `mcp-remote` is pinned
+  to 0.14.3 in every stdio example.
+
 ## 0.2.1 — 2026-09-26
 
 - Listing copy for the Cursor Marketplace: describe Raily as growing your
