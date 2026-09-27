@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "raily": {
+      "type": "http",
+      "url": "https://railyai.com/mcp"
+    }
+  }
+}

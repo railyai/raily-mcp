@@ -1,23 +1,26 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "raily-mcp",
+  "name": "raily",
+  "displayName": "Raily",
   "version": "0.3.0",
   "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing.",
   "author": {
     "name": "Raily AI",
+    "email": "partners@railyai.com",
     "url": "https://railyai.com"
   },
   "homepage": "https://railyai.com",
   "repository": "https://github.com/railyai/raily-mcp",
   "license": "MIT",
+  "privacyPolicyUrl": "https://railyai.com/privacy/",
+  "termsOfServiceUrl": "https://railyai.com/terms/",
+  "supportUrl": "https://railyai.com/support",
+  "documentationUrl": "https://railyai.com/api/",
+  "icon": "assets/logo.png",
   "keywords": [
     "raily",
-    "mcp",
     "personal-agent",
-    "oauth",
-    "streamable-http",
-    "ai-agents",
     "networking",
-    "introductions"
+    "introductions",
+    "matching"
   ]
 }

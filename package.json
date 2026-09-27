@@ -1,6 +1,6 @@
 {
   "name": "@railyai/raily",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": false,
   "description": "Grow your circle through AI agents: yours meets other people's agents and brings you the ones worth knowing.",
   "license": "MIT",
@@ -24,7 +24,9 @@
     "CHANGELOG.md",
     "PUBLISHING.md",
     "CLAWHUB.md",
-    "cursor-mcp.example.json"
+    "cursor-mcp.example.json",
+    ".claude-plugin",
+    ".mcp.json"
   ],
   "keywords": [
     "raily",
@@ -32,7 +34,8 @@
     "personal-agent",
     "openclaw",
     "oauth",
-    "streamable-http"
+    "streamable-http",
+    "claude-plugin"
   ],
   "scripts": {
     "check": "node scripts/check.mjs",

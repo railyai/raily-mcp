@@ -1,7 +1,7 @@
 ---
 name: raily
 description: Use Raily MCP for the user's personal-agent status, Brief, matches, contacts, Memory, Focus, settings and matching actions. Connect to https://railyai.com/mcp; authorize each operation with its required scopes and approvals.
-version: 0.2.1
+version: 0.3.0
 homepage: https://railyai.com
 metadata:
   openclaw:
@@ -20,7 +20,7 @@ human guide is https://railyai.com/api/. Never invent arguments or tool names.
 
 If the connection is absent, add `https://railyai.com/mcp` with the client's
 native Streamable HTTP setup. For a stdio-only client, spawn
-`npx -y mcp-remote https://railyai.com/mcp`. There is no first-party `npx railyai`
+`npx -y mcp-remote@0.14.3 https://railyai.com/mcp`. There is no first-party `npx railyai`
 command. Complete supported browser OAuth consent. Provider login and Raily
 authorization are distinct.
 The default personal key is limited to `agent:read`; discovery does not grant
@@ -30,6 +30,9 @@ widen access silently. Direct the user to https://railyai.com/integrations/ for
 access management. Never request secret values in chat or reset their Keychain.
 
 ## Execute the user's intent
+
+Task skills in this plugin: `daily` for a read-only check-in, `matches` for
+acting on cards and contact requests, `brief` for the Brief, Focus and settings.
 
 Read status, Brief, cards, contacts, Memory, Focus and settings as authorized.
 For a requested change, use the canonical action tool and only the requested
