@@ -12,6 +12,9 @@
   "repository": "https://github.com/railyai/raily-mcp",
   "license": "MIT",
   "privacyPolicyUrl": "https://railyai.com/privacy/",
+  "termsOfServiceUrl": "https://railyai.com/terms/",
+  "supportUrl": "https://railyai.com/support",
+  "documentationUrl": "https://railyai.com/api/",
   "icon": "assets/logo.png",
   "keywords": [
     "raily",
