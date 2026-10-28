@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Author and marketplace owner name is now «Raily», the brand name.
+  Plugin ids and names (`raily`, `raily-mcp`) are unchanged.
+
 ## 0.3.0 — 2026-09-27
 
 - Claude plugin: `.claude-plugin/plugin.json` (name `raily`), `.mcp.json` with
